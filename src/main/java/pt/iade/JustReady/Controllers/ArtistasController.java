@@ -21,20 +21,20 @@ import pt.iade.JustReady.models.Repositories.ArtistasRepository;
 
 
 @RestController
-@RequestMapping(path = "/api/art")
+@RequestMapping(path = "/api/artistas")
 public class ArtistasController {
     private Logger logger = LoggerFactory.getLogger(ArtistasController.class);
     @Autowired
     private ArtistasRepository artistasRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Artistas> getartistas() {
+    public Iterable<Artistas> getArtistas() {
         logger.info("Sending all artistas");
         return artistasRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Artistas getartistas(@PathVariable int id) {
+    public Artistas getArtistas(@PathVariable int id) {
         logger.info("Sending artistas with id " + id);
         Optional<Artistas> _art = artistasRepository.findById(id);
         if (!_art.isPresent())
@@ -44,14 +44,14 @@ public class ArtistasController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Artistas saverartistas(@RequestBody Artistas artistas) {
+    public Artistas saverArtistas(@RequestBody Artistas artistas) {
         Artistas savedArtistas = artistasRepository.save(artistas);
         logger.info("Saving  with id " + savedArtistas.getArt_id());
         return savedArtistas;
     }
 
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response deleteartistas(@PathVariable int id) {
+    public Response deleteArtistas(@PathVariable int id) {
         logger.info("Deleting artistas with id " + id);
         // No verification to see if it exists
         artistasRepository.deleteById(id);

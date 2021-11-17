@@ -14,48 +14,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.iade.JustReady.models.TablePalco;
+import pt.iade.JustReady.models.Palco;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
 import pt.iade.JustReady.models.Exceptions.Response;
-import pt.iade.JustReady.models.Repositories.TablePalcoRepository;
+import pt.iade.JustReady.models.Repositories.PalcoRepository;
 
 
 @RestController
-@RequestMapping(path = "/api/tp")
-public class TablePalcoController {
+@RequestMapping(path = "/api/pal")
+public class PalcoController {
 
-    private Logger logger = LoggerFactory.getLogger(TablePalcoController.class);
+    private Logger logger = LoggerFactory.getLogger(PalcoController.class);
     @Autowired
-    private TablePalcoRepository tpRepository;
+    private PalcoRepository palRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<TablePalco> getTablePalco() {
+    public Iterable<Palco> getPalco() {
         logger.info("Sending all tp");
-        return tpRepository.findAll();
+        return palRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TablePalco getTablePalco(@PathVariable int id) {
+    public Palco getPalco(@PathVariable int id) {
         logger.info("Sending tp with id " + id);
-        Optional<TablePalco> _tp = tpRepository.findById(id);
-        if (!_tp.isPresent())
-            throw new NotFoundException("" + id, "tp", "id");
+        Optional<Palco> _pal = palRepository.findById(id);
+        if (!_pal.isPresent())
+            throw new NotFoundException("" + id, "pal", "id");
         else
-            return _tp.get();
+            return _pal.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TablePalco saveTablePalco(@RequestBody TablePalco tablePalco) {
-        TablePalco savedTablePalco = tpRepository.save(tablePalco);
-        logger.info("Saving tp with id " + savedTablePalco.getPal_id());
-        return savedTablePalco;
+    public Palco savePalco(@RequestBody Palco palco) {
+        Palco savedPalco = palRepository.save(palco);
+        logger.info("Saving tp with id " + savedPalco.getPal_id());
+        return savedPalco;
     }
 
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response deleteTablePalco(@PathVariable int id) {
+    public Response deletePalco(@PathVariable int id) {
         logger.info("Deleting tp with id " + id);
         // No verification to see if it exists
-        tpRepository.deleteById(id);
+        palRepository.deleteById(id);
         return new Response("Deleted tp with id " + id, null);
     }
     

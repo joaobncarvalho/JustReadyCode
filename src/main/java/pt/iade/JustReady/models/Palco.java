@@ -9,16 +9,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "palco")
-public class TablePalco {
+public class Palco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="palco_id") 
+    @Column(name="pal_id")
     private int pal_id;
-    @Column(name="palco_name") 
+    @Column(name="pal_name")
     private String pal_name;
-    @Column(name="palco_lat") 
+    @Column(name="pal_lat")
     private float pal_lat;
-    @Column(name="palco_long") 
+    @Column(name="pal_long")
     private float pal_long;
 
     public int getPal_id() {
