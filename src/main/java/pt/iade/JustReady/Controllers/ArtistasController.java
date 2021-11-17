@@ -21,7 +21,7 @@ import pt.iade.JustReady.models.Repositories.ArtistasRepository;
 
 
 @RestController
-@RequestMapping(path = "/api/artistas")
+@RequestMapping(path = "/api/art")
 public class ArtistasController {
     private Logger logger = LoggerFactory.getLogger(ArtistasController.class);
     @Autowired
@@ -29,18 +29,18 @@ public class ArtistasController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Artistas> getArtistas() {
-        logger.info("Sending all Artistas");
+        logger.info("Sending all artistas");
         return artistasRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Artistas getArtistas(@PathVariable int id) {
         logger.info("Sending artistas with id " + id);
-        Optional<Artistas> _artistas = artistasRepository.findById(id);
-        if (!_artistas.isPresent())
+        Optional<Artistas> _art = artistasRepository.findById(id);
+        if (!_art.isPresent())
             throw new NotFoundException("" + id, "Artistas", "id");
         else
-            return _artistas.get();
+            return _art.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
