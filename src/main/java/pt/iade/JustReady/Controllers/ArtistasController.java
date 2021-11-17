@@ -38,7 +38,7 @@ public class ArtistasController {
         logger.info("Sending artistas with id " + id);
         Optional<Artistas> _art = artistasRepository.findById(id);
         if (!_art.isPresent())
-            throw new NotFoundException("" + id, "Artistas", "id");
+            throw new NotFoundException("" + id, "art", "id");
         else
             return _art.get();
     }
