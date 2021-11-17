@@ -38,7 +38,7 @@ public class EdicaoFestivalController {
     public EdicaoFestival getEdicaoFestival(@PathVariable int id) {
         logger.info("Sending edicaofestival with id " + id);
         Optional<EdicaoFestival> _edicaofestival = edicaofestivalRepository.findById(id);
-        if (_edicaofestival.isEmpty())
+        if (!_edicaofestival.isPresent())
             throw new NotFoundException("" + id, "EdicaoFestival", "id");
         else
             return _edicaofestival.get();

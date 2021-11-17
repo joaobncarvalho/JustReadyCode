@@ -37,7 +37,7 @@ public class TicketTypeController {
     public TicketType getTicketType(@PathVariable int id) {
         logger.info("Sending ticket type with id " + id);
         Optional<TicketType> _tkt = tktRepository.findById(id);
-        if (_tkt.isEmpty())
+        if (!_tkt.isPresent())
             throw new NotFoundException("" + id, "ticket type", "id");
         else
             return _tkt.get();

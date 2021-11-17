@@ -38,7 +38,7 @@ public class TablePalcoController {
     public TablePalco getTablePalco(@PathVariable int id) {
         logger.info("Sending tp with id " + id);
         Optional<TablePalco> _tp = tpRepository.findById(id);
-        if (_tp.isEmpty())
+        if (!_tp.isPresent())
             throw new NotFoundException("" + id, "tp", "id");
         else
             return _tp.get();

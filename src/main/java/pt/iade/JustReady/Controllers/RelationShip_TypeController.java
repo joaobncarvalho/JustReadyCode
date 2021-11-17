@@ -36,7 +36,7 @@ public class RelationShip_TypeController {
     public RelationShip_type getRelationShip_type(@PathVariable int id) {
         logger.info("Sending rt with id " + id);
         Optional<RelationShip_type> _rt = rtRepository.findById(id);
-        if (_rt.isEmpty())
+        if (!_rt.isPresent())
             throw new NotFoundException("" + id, "rt", "id");
         else
             return _rt.get();

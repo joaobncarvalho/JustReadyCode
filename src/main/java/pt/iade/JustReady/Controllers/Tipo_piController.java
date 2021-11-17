@@ -37,7 +37,7 @@ public class Tipo_piController {
     public Tipo_pi getTipo_pi(@PathVariable int id) {
         logger.info("Sending tipos_pi with id " + id);
         Optional<Tipo_pi> _tpi = tpiRepository.findById(id);
-        if (_tpi.isEmpty())
+        if (!_tpi.isPresent())
             throw new NotFoundException("" + id, "tpi", "id");
         else
             return _tpi.get();

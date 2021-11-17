@@ -37,7 +37,7 @@ public class TicketsController {
     public Tickets getTickets(@PathVariable int id) {
         logger.info("Sending tickets with id " + id);
         Optional<Tickets> _tk = tkRepository.findById(id);
-        if (_tk.isEmpty())
+        if (!_tk.isPresent())
             throw new NotFoundException("" + id, "tickets", "id");
         else
             return _tk.get();

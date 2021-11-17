@@ -37,7 +37,7 @@ public class RelationShiplistController {
     public RelationShiplist getRelationShiplist(@PathVariable int id) {
         logger.info("Sending rs with id " + id);
         Optional<RelationShiplist> _rs = rsRepository.findById(id);
-        if (_rs.isEmpty())
+        if (!_rs.isPresent())
             throw new NotFoundException("" + id, "rs", "id");
         else
             return _rs.get();

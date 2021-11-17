@@ -39,7 +39,7 @@ public class Relation_EstadoController {
         public Relation_Estado getRelation_Estado(@PathVariable int id) {
             logger.info("Sending re with id " + id);
             Optional<Relation_Estado> _re = reRepository.findById(id);
-            if (_re.isEmpty())
+            if (!_re.isPresent())
                 throw new NotFoundException("" + id, "re", "id");
             else
                 return _re.get();

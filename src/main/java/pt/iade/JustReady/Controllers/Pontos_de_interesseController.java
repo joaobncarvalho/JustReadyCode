@@ -37,7 +37,7 @@ public class Pontos_de_interesseController {
     public Pontos_de_interesse getPontos_de_interesse(@PathVariable int id) {
         logger.info("Sending  with id " + id);
         Optional<Pontos_de_interesse> _pontosdeinteresse = pontosdeinteresseRepository.findById(id);
-        if (_pontosdeinteresse.isEmpty())
+        if (!_pontosdeinteresse.isPresent())
             throw new NotFoundException("" + id, "Pontos_de_interesse", "id");
         else
             return _pontosdeinteresse.get();

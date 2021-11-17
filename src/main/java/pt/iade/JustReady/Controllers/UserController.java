@@ -37,7 +37,7 @@ public class UserController {
     public Users getUsers(@PathVariable int id) {
         logger.info("Sending user with id " + id);
         Optional<Users> _us = usRepository.findById(id);
-        if (_us.isEmpty())
+        if (!_us.isPresent())
             throw new NotFoundException("" + id, "User", "id");
         else
             return _us.get();

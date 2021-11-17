@@ -37,7 +37,7 @@ public class ArtistasController {
     public Artistas getArtistas(@PathVariable int id) {
         logger.info("Sending artistas with id " + id);
         Optional<Artistas> _artistas = artistasRepository.findById(id);
-        if (_artistas.isEmpty())
+        if (!_artistas.isPresent())
             throw new NotFoundException("" + id, "Artistas", "id");
         else
             return _artistas.get();
