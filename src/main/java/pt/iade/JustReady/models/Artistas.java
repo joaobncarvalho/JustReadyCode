@@ -14,11 +14,11 @@ import javax.persistence.Table;
 public class Artistas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="artistas_id") 
+    @Column(name="art_id")
     private int  art_id;
-    @Column(name="artistas_name") 
+    @Column(name="art_name")
     private String art_name;
-    @Column(name="artistas_concert") 
+    @Column(name="art_concert")
     private LocalDate art_concert;
 
     public int getArt_id() {

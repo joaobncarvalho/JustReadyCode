@@ -30,13 +30,13 @@ public class PalcoController {
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Palco> getPalco() {
-        logger.info("Sending all tp");
+        logger.info("Sending all pal");
         return palRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Palco getPalco(@PathVariable int id) {
-        logger.info("Sending tp with id " + id);
+        logger.info("Sending pal with id " + id);
         Optional<Palco> _pal = palRepository.findById(id);
         if (!_pal.isPresent())
             throw new NotFoundException("" + id, "pal", "id");
