@@ -12,29 +12,29 @@ import javax.persistence.Table;
 public class Tickets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="tick_id") 
-    private int tick_id;
-    @Column(name="tick_name") 
-    private String tick_name;
-    @Column(name="tick_number") 
-    private int tick_number;
-    @Column(name="ticket_tt_id") 
-    private int ticket_tt_id;
+    @Column(name="tickets_id")
+    private int tickets_id;
+    @Column(name="tickets_name")
+    private String tickets_name;
+    @Column(name="tickets_number")
+    private int tickets_number;
+    @Column(name="tickets_tt_id")
+    private int tickets_tt_id;
     
     public int getTick_id() {
-        return tick_id;
+        return tickets_id;
     }
     
-    public String getTick_name() {
-        return tick_name;
+    public String getTickets_name() {
+        return tickets_name;
     }
     
-    public int getTick_number() {
-        return tick_number;
+    public int getTickets_number() {
+        return tickets_number;
     }
     
-    public int getTicket_tt_id() {
-        return ticket_tt_id;
+    public int getTickets_tt_id() {
+        return tickets_tt_id;
     }
     
 

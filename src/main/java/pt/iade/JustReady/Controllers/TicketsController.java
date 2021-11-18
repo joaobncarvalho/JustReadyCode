@@ -25,37 +25,37 @@ public class TicketsController {
 
     private Logger logger = LoggerFactory.getLogger(TicketsController.class);
     @Autowired
-    private TicketsRepository tkRepository;
+    private TicketsRepository ticketsRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Tickets> getTickets() {
         logger.info("Sending all tickets");
-        return tkRepository.findAll();
+        return ticketsRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Tickets getTickets(@PathVariable int id) {
         logger.info("Sending tickets with id " + id);
-        Optional<Tickets> _tk = tkRepository.findById(id);
-        if (!_tk.isPresent())
+        Optional<Tickets> _tick = ticketsRepository.findById(id);
+        if (!_tick.isPresent())
             throw new NotFoundException("" + id, "tickets", "id");
         else
-            return _tk.get();
+            return _tick.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Tickets saveTickets(@RequestBody Tickets tickets) {
-        Tickets savedTickets = tkRepository.save(tickets);
-        logger.info("Saving ticket with id " + savedTickets.getTick_id());
+        Tickets savedTickets = ticketsRepository.save(tickets);
+        logger.info("Saving tickets with id " + savedTickets.getTick_id());
         return savedTickets;
     }
 
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteTickets(@PathVariable int id) {
-        logger.info("Deleting ticket with id " + id);
+        logger.info("Deleting tickets with id " + id);
         // No verification to see if it exists
-        tkRepository.deleteById(id);
-        return new Response("Deleted ticket with id " + id, null);
+        ticketsRepository.deleteById(id);
+        return new Response("Deleted tickets with id " + id, null);
     }
     
 }
