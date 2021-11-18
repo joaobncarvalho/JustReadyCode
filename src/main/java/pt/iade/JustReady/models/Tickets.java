@@ -21,7 +21,7 @@ public class Tickets {
     @Column(name="tickets_tt_id")
     private int tickets_tt_id;
     
-    public int getTick_id() {
+    public int getTickets_id() {
         return tickets_id;
     }
     

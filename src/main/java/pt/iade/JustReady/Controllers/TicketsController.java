@@ -36,17 +36,17 @@ public class TicketsController {
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Tickets getTickets(@PathVariable int id) {
         logger.info("Sending tickets with id " + id);
-        Optional<Tickets> _tick = ticketsRepository.findById(id);
-        if (!_tick.isPresent())
+        Optional<Tickets> _tickets = ticketsRepository.findById(id);
+        if (!_tickets.isPresent())
             throw new NotFoundException("" + id, "tickets", "id");
         else
-            return _tick.get();
+            return _tickets.get();
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Tickets saveTickets(@RequestBody Tickets tickets) {
         Tickets savedTickets = ticketsRepository.save(tickets);
-        logger.info("Saving tickets with id " + savedTickets.getTick_id());
+        logger.info("Saving tickets with id " + savedTickets.getTickets_id());
         return savedTickets;
     }
 
