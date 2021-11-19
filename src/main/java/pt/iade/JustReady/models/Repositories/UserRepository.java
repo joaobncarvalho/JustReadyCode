@@ -1,18 +1,13 @@
 package pt.iade.JustReady.models.Repositories;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import org.springframework.data.repository.query.Param;
 import pt.iade.JustReady.models.Users;
 
-public interface UserRepository extends CrudRepository<Users, Integer> {
+import javax.transaction.Transactional;
 
-    String resQuery1 = "SELECT t.*\n" +
-            "FROM public.users t\n" +
-            "ORDER BY users_bdate DESC";
+public interface UserRepository extends CrudRepository<Users, Integer> { }
 
-    @Query(value=resQuery1, nativeQuery=true)
-    Iterable<String>getUserOrgId1();
-
-
-}
