@@ -57,6 +57,9 @@ public class UserController {
         usRepository.deleteById(id);
         return new Response("Deleted users with id " + id, null);
     }
-
+    @GetMapping(path = "/not/1", produces= MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getUserOrgId1() {
+        return usRepository.getUserOrgId1();
+    }
     
 }
