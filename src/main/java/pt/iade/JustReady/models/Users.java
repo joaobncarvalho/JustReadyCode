@@ -35,9 +35,7 @@ public class Users {
         return users_name;
     }
     
-    public LocalDate getUsers_bdate() {
-        return users_bdate;
-    }
+    public LocalDate getUsers_bdate() {return users_bdate;}
     
     public char getUsers_gender() {
         return users_gender;
@@ -50,13 +48,6 @@ public class Users {
     public int getUsers_ticket() {
         return users_ticket;
     }
-    
-
-
-
-
-
-
 
 
 

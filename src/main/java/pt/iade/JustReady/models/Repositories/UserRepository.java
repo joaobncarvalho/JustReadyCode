@@ -9,5 +9,7 @@ import pt.iade.JustReady.models.Users;
 
 import javax.transaction.Transactional;
 
-public interface UserRepository extends CrudRepository<Users, Integer> { }
+public interface UserRepository extends CrudRepository<Users, Integer> {
+
+}
 

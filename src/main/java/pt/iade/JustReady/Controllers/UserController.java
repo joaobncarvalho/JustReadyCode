@@ -2,6 +2,7 @@ package pt.iade.JustReady.Controllers;
 
 import java.util.Optional;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

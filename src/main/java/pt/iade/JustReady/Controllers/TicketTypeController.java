@@ -32,6 +32,11 @@ public class TicketTypeController {
         logger.info("Sending all ticket type");
         return tktRepository.findAll();
     }
+    @GetMapping(path = "/prices", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<TicketType> getPrices() {
+        logger.info("Sending all ticket type");
+        return tktRepository.viewTTprice();
+    }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TicketType getTicketType(@PathVariable int id) {

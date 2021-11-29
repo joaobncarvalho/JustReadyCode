@@ -7,4 +7,5 @@ import pt.iade.JustReady.models.Artistas;
 
 public interface ArtistasRepository extends CrudRepository<Artistas, Integer> {
 
+
 }
