@@ -18,6 +18,7 @@ import pt.iade.JustReady.models.RelationShiplist;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
 import pt.iade.JustReady.models.Exceptions.Response;
 import pt.iade.JustReady.models.Repositories.RelationShiplistRepository;
+import pt.iade.JustReady.models.TicketType;
 
 @RestController
 @RequestMapping(path = "/api/rs")
@@ -31,6 +32,11 @@ public class RelationShiplistController {
     public Iterable<RelationShiplist> getRelationShiplist() {
         logger.info("Sending all rs");
         return rsRepository.findAll();
+    }
+    @GetMapping(path = "/verifyfone", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<TicketType> getverifyFriendsOne() {
+        logger.info("Sending all rs");
+        return rsRepository.verifyFriendsOne();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
