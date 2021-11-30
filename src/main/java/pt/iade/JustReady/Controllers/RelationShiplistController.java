@@ -35,7 +35,7 @@ public class RelationShiplistController {
     }
 
     @GetMapping(path = "/verifyfone", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<TicketType> getverifyFriendsOne() {
+    public Iterable<RelationShiplist> getVerifyFriendsOne() {
         logger.info("Sending all rs");
         return rsRepository.verifyFriendsOne();
     }

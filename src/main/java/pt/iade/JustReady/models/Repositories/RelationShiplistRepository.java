@@ -12,5 +12,5 @@ public interface RelationShiplistRepository extends CrudRepository<RelationShipl
     String QueryVerifyFriendsOne = "select * from relationshiplist where rl_users_idfriend = 1";
 
     @Query(value = QueryVerifyFriendsOne, nativeQuery = true )
-    Iterable<TicketType> verifyFriendsOne();
+    Iterable<RelationShiplist> verifyFriendsOne();
 }

@@ -34,6 +34,13 @@ public class PalcoController {
         return palRepository.findAll();
     }
 
+    @GetMapping(path = "/principal", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<Palco> getNamePalco() {
+        logger.info("Sending all pal");
+        return palRepository.viewPalcoByName();
+    }
+
+
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Palco getPalco(@PathVariable int id) {
         logger.info("Sending pal with id " + id);
