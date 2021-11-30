@@ -29,10 +29,11 @@ public class RelationShiplistController {
     private RelationShiplistRepository rsRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<RelationShiplist> getRelationShiplist() {
+    public Iterable<RelationShiplist> getRelationShipList() {
         logger.info("Sending all rs");
         return rsRepository.findAll();
     }
+
     @GetMapping(path = "/verifyfone", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<TicketType> getverifyFriendsOne() {
         logger.info("Sending all rs");

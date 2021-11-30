@@ -15,7 +15,7 @@ public class RelationShiplist {
     @Column(name="rl_id") 
     private int rl_id;
     @Column(name="rl_rel_nameid")
-    private String rl_rel_nameid;
+    private int rl_rel_nameid;
     @Column(name="rl_users_num")
     private int rl_users_num;
     @Column(name="rl_users_idmain")
@@ -28,7 +28,7 @@ public class RelationShiplist {
         return rl_id;
     }
     
-    public String getRl_rel_nameid() {
+    public int getRl_rel_nameid() {
         return rl_rel_nameid;
     }
 
