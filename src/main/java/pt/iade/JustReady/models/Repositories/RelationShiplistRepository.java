@@ -9,7 +9,7 @@ import pt.iade.JustReady.models.TicketType;
 
 public interface RelationShiplistRepository extends CrudRepository<RelationShiplist, Integer> {
 
-    String QueryVerifyFriendsOne = "select * from relationshiplist where rl_users_idfriend = 1";
+    String QueryVerifyFriendsOne = "select * from relationshiplist ";
 
     @Query(value = QueryVerifyFriendsOne, nativeQuery = true )
     Iterable<TicketType> verifyFriendsOne();
