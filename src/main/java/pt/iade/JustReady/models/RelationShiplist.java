@@ -16,8 +16,8 @@ public class RelationShiplist {
     private int rl_id;
     @Column(name="rl_rel_nameid")
     private int rl_rel_nameid;
-    @Column(name="rl_users_num")
-    private int rl_users_num;
+    @Column(name="rl_users_ticket")
+    private int rl_users_ticket;
     @Column(name="rl_users_idmain")
     private int rl_users_idmain;
     @Column(name="rl_users_idfriend")
@@ -32,8 +32,8 @@ public class RelationShiplist {
         return rl_rel_nameid;
     }
 
-    public int getRl_users_num() {
-        return rl_users_num;
+    public int getRl_users_ticket() {
+        return rl_users_ticket;
     }
 
     public int getRl_users_idmain() {
