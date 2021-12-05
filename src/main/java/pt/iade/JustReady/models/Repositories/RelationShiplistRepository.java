@@ -9,7 +9,7 @@ import pt.iade.JustReady.models.TicketType;
 
 public interface RelationShiplistRepository extends CrudRepository<RelationShiplist, Integer> {
 
-    String QueryVerifyFriendsOne = "select u2.users_name, rel_name,u2.users_ticket\n" +
+    String QueryVerifyFriendsOne = "select *\n" +
             "from relationshiplist\n" +
             "         inner join users u1 on rl_users_idmain=u1.users_id\n" +
             "         inner join users u2 on rl_users_idfriend=u2.users_id\n" +
