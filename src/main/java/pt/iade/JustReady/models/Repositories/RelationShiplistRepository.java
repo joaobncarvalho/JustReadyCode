@@ -1,21 +1,21 @@
 package pt.iade.JustReady.models.Repositories;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.data.repository.query.Param;
 import pt.iade.JustReady.models.RelationShiplist;
-import pt.iade.JustReady.models.TicketType;
+import javax.transaction.Transactional;
 
 
 public interface RelationShiplistRepository extends CrudRepository<RelationShiplist, Integer> {
+    @Modifying @Transactional
+    @Query(value="insert into relationshiplist ( rl_id,rl_rel_nameid, rl_users_ticket,"+
+            "rl_users_idmain, rl_users_idfriend)"+
+            "values(:#{#relationshiplist.nameid}, :#{#relationshiplist.nameid}, :#{#relationshiplist.ticket},"+
+            ":#{#relationshiplist.idmain}, :#{#relationshiplist.idfriend}", nativeQuery=true)
+    Integer registerFriend(@Param("relationshiplist") RelationShiplist relationShiplist);
 
-    String QueryVerifyFriendsOne = "select u1.users_name as username, u2.users_name as username2, rel_name as relname\n" +
-            "from relationshiplist\n" +
-            "inner join users u1 on rl_users_idmain=u1.users_id\n" +
-            "inner join users u2 on rl_users_idfriend=u2.users_id\n" +
-            "inner join relationship_type on rl_rel_nameid=rel_id\n" +
-            "where u1.users_id=1 and rel_id=1";
 
-    @Query(value = QueryVerifyFriendsOne, nativeQuery = true )
-    Iterable<RelationShiplist> verifyFriendsOne();
+
 }

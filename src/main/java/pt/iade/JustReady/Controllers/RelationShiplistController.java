@@ -18,7 +18,6 @@ import pt.iade.JustReady.models.RelationShiplist;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
 import pt.iade.JustReady.models.Exceptions.Response;
 import pt.iade.JustReady.models.Repositories.RelationShiplistRepository;
-import pt.iade.JustReady.models.TicketType;
 
 @RestController
 @RequestMapping(path = "/api/rs")
@@ -34,11 +33,6 @@ public class RelationShiplistController {
         return rsRepository.findAll();
     }
 
-    @GetMapping(path = "/verifyfone", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<RelationShiplist> getVerifyFriendsOne() {
-        logger.info("Sending all rs");
-        return rsRepository.verifyFriendsOne();
-    }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public RelationShiplist getRelationShiplist(@PathVariable int id) {
@@ -50,12 +44,21 @@ public class RelationShiplistController {
             return _rs.get();
     }
 
-    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public RelationShiplist saveRelationShiplist(@RequestBody RelationShiplist relationShiplist) {
         RelationShiplist savedrRelationShiplist = rsRepository.save(relationShiplist);
         logger.info("Saving rs with id " + savedrRelationShiplist.getRl_id());
         return savedrRelationShiplist;
+
+    }*/
+    @PostMapping(path = "/newfriend", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response saveFriend(@RequestBody RelationShiplist relationShiplistId){
+        logger.info("Registering a new friend with id"+ relationShiplistId.getRl_id()+
+                "Registering a new ticket"+relationShiplistId.getRl_users_ticket());
+        Integer inserted = rsRepository.registerFriend(relationShiplistId);
+        return new Response(inserted+"registation created",relationShiplistId);
     }
+
 
     @DeleteMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response deleteRelationShiplist(@PathVariable int id) {
