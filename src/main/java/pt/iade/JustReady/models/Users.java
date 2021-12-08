@@ -26,8 +26,8 @@ public class Users {
     private String users_email;
     @Column(name="users_ticket") 
     private int users_ticket;
-    @Column(name="users_password")
-    private String users_password;
+    @Column(name="users_Password")
+    private String users_Password;
 
 
     public int getUsers_id() {
@@ -53,7 +53,7 @@ public class Users {
     }
 
     public String getUsers_password() {
-        return users_password;
+        return users_Password;
     }
 
 
