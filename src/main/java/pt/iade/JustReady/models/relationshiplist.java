@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "relationshiplist")
-public class RelationShiplist {
+public class relationshiplist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="rl_id") 

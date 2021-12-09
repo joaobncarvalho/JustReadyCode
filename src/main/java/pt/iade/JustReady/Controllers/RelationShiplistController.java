@@ -14,49 +14,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.iade.JustReady.models.RelationShiplist;
+import pt.iade.JustReady.models.relationshiplist;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
 import pt.iade.JustReady.models.Exceptions.Response;
-import pt.iade.JustReady.models.Repositories.RelationShiplistRepository;
+import pt.iade.JustReady.models.Repositories.relationshiplistrepository;
 
 @RestController
 @RequestMapping(path = "/api/rs")
 public class RelationShiplistController {
 
-    private Logger logger = LoggerFactory.getLogger(RelationShiplistController.class);
+    private final Logger logger = LoggerFactory.getLogger(RelationShiplistController.class);
     @Autowired
-    private RelationShiplistRepository rsRepository;
+    private relationshiplistrepository rsRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<RelationShiplist> getRelationShipList() {
+    public Iterable<relationshiplist> getRelationShipList() {
         logger.info("Sending all rs");
         return rsRepository.findAll();
     }
 
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RelationShiplist getRelationShiplist(@PathVariable int id) {
+    public relationshiplist getRelationShiplist(@PathVariable int id) {
         logger.info("Sending rs with id " + id);
-        Optional<RelationShiplist> _rs = rsRepository.findById(id);
+        Optional<relationshiplist> _rs = rsRepository.findById(id);
         if (!_rs.isPresent())
             throw new NotFoundException("" + id, "rs", "id");
         else
             return _rs.get();
     }
 
-    /*@PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RelationShiplist saveRelationShiplist(@RequestBody RelationShiplist relationShiplist) {
-        RelationShiplist savedrRelationShiplist = rsRepository.save(relationShiplist);
+    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public relationshiplist saveRelationShiplist(@RequestBody relationshiplist relationShiplist) {
+        relationshiplist savedrRelationShiplist = rsRepository.save(relationShiplist);
         logger.info("Saving rs with id " + savedrRelationShiplist.getRl_id());
         return savedrRelationShiplist;
 
-    }*/
-    @PostMapping(path = "/newfriend", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response saveFriend(@RequestBody RelationShiplist relationShiplistId){
-        logger.info("Registering a new friend with id"+ relationShiplistId.getRl_id()+
-                "Registering a new ticket"+relationShiplistId.getRl_users_ticket());
-        Integer inserted = rsRepository.registerFriend(relationShiplistId);
-        return new Response(inserted+"registation created",relationShiplistId);
     }
 
 
