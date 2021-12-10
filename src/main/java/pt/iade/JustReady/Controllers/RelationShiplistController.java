@@ -33,6 +33,11 @@ public class RelationShiplistController {
         return rsRepository.findAll();
     }
 
+    @GetMapping(path = "/friendslist", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<relationshiplist> getRelationShipListFriends() {
+        logger.info("Sending all rs");
+        return rsRepository.findAll();
+    }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public relationshiplist getRelationShiplist(@PathVariable int id) {
