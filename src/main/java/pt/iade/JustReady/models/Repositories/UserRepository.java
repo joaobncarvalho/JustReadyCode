@@ -23,7 +23,7 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
     String QueryFriends1 = "\n" +
             "select *\n" +
             "from users\n" +
-            "where users_id=2;";
+            "where users_id=3;";
 
     @Query(value = QueryFriends1, nativeQuery = true )
     Iterable<Users> viewFriendsusers1();
