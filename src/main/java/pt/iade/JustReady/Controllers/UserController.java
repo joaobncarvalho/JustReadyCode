@@ -2,7 +2,6 @@ package pt.iade.JustReady.Controllers;
 
 import java.util.Optional;
 
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,17 @@ public class UserController {
     public Iterable<Users> getUser() {
         logger.info("Sending all user");
         return usRepository.findAll();
+    }
+
+    @GetMapping(path = "/friends", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Users> getFriends() {
+        logger.info("Sending all friends");
+        return usRepository.viewFriendsusers();
+    }
+    @GetMapping(path = "/friends1", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Users> getFriends1() {
+        logger.info("Sending all friends1");
+        return usRepository.viewFriendsusers1();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
