@@ -69,5 +69,11 @@ public class UserController {
         return new Response("Deleted users with id " + id, null);
     }
 
+    @GetMapping(path = "/exite/{ticket}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getexit_userBypass_nome(@PathVariable("ticket") int ticket,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route ticket: ,pass:" + ticket +pass);
+        return usRepository.Users_verification(ticket,pass);
+    }
+
     
 }

@@ -27,5 +27,16 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
 
     @Query(value = QueryFriends1, nativeQuery = true )
     Iterable<Users> viewFriendsusers1();
+
+    String QueryLogin = "\n" +
+            "select *\n" +
+            "from users\n" +
+            "where users_id=3;";
+
+    @Query(value = QueryLogin, nativeQuery = true )
+    Iterable<Users> viewLogin();
+
+    @Query(value = "select users_verification(:ticket,:pass)", nativeQuery = true)
+    Iterable<String> Users_verification(int ticket, String pass);
 }
 
