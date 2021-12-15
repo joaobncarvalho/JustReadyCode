@@ -79,9 +79,12 @@ public class UserController {
         logger.info("Sending all user location");
         return usRepository.viewLocation();
     }
-    @PutMapping(value = "/{id:[0-9]+}")
-    public User updateUser(@PathVariable("users_id")int userid, @RequestBody User user ){
-        return updateUser(userid,user);
-    }
-}
 
+    @PutMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Users updateUsers(@RequestBody Users users) {
+        Users updateUsers = usRepository.save(users);
+        logger.info("Saving users with id " + updateUsers.getUsers_id());
+        return updateUsers;
+    }
+
+}
