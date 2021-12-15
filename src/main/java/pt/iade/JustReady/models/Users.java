@@ -28,8 +28,11 @@ public class Users {
     private int users_ticket;
     @Column(name="users_password")
     private String users_password;
-    @Column(name="users_location")
-    private float users_location;
+    @Column(name= "users_locationlong")
+    private float users_locationlong;
+    @Column(name= "users_locationlat")
+    private float users_locationlat;
+
 
 
     public int getUsers_id() {
@@ -58,8 +61,12 @@ public class Users {
         return users_password;
     }
 
-    public float getUsers_location() {
-        return users_location;
+    public float getUsers_locationlong() {
+        return users_locationlong;
+    }
+
+    public float getUsers_locationlat() {
+        return users_locationlat;
     }
 
 
