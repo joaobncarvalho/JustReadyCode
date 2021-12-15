@@ -77,7 +77,7 @@ public class UserController {
         return usRepository.viewLocation();
     }
 
-    public class RegistrationLocationView {
+    /*public class RegistrationLocationView {
         private float location;
         private int regId;
 
@@ -93,7 +93,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(path = "/{id}/regilocation/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id:[0-9]+}/regilocation/", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response updateLocation(@PathVariable int id,
                                    @RequestBody RegistrationLocationView locationData) {
         logger.info("Updating Location with " + id +
@@ -106,7 +106,7 @@ public class UserController {
                 " grade updated for student with id " + id, locationData);
 
 
-    }
+    }*/
 
     /*public class RegistrationLocationView1 {
         private float location; private int regId;
