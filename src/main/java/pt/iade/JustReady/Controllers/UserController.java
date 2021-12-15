@@ -1,18 +1,13 @@
 package pt.iade.JustReady.Controllers;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pt.iade.JustReady.models.Users;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
@@ -38,6 +33,7 @@ public class UserController {
         logger.info("Sending all friends");
         return usRepository.viewFriendsusers();
     }
+
     @GetMapping(path = "/friends1", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Users> getFriends1() {
         logger.info("Sending all friends1");
@@ -70,9 +66,9 @@ public class UserController {
     }
 
     @GetMapping(path = "/exite/{ticket}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getexit_userBypass_nome(@PathVariable("ticket") int ticket,@PathVariable("pass") String pass) {
-        logger.info("Sending bio from route ticket: ,pass:" + ticket +pass);
-        return usRepository.Users_verification(ticket,pass);
+    public Iterable<String> getexit_userBypass_nome(@PathVariable("ticket") int ticket, @PathVariable("pass") String pass) {
+        logger.info("Sending bio from route ticket: ,pass:" + ticket + pass);
+        return usRepository.Users_verification(ticket, pass);
     }
 
     @GetMapping(path = "/location", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,6 +77,56 @@ public class UserController {
         return usRepository.viewLocation();
     }
 
+    public class RegistrationLocationView {
+        private float location;
+        private int regId;
+
+        private int getRegId() {
+            return regId;
+        }
+        public  float getUsers_locationlat(){ return location;}
+        public float getUsers_locationlong() {
+            return location;
+        }
+
+        public RegistrationLocationView() {
+        }
+    }
+
+    @PutMapping(path = "/{id}/regilocationlong/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response updateLocation(@PathVariable int id,
+                                   @RequestBody RegistrationLocationView locationData) {
+        logger.info("Updating Location with " + id +
+                " with long " + locationData.getUsers_locationlong() + " with lat " + locationData.getUsers_locationlat());
+        // Not verifying if it exists (error if does not exist)
+        Integer updated = usRepository.updateLocation(
+                locationData.getRegId(), locationData.getUsers_locationlong(), locationData.getUsers_locationlat());
+        LocalDate.now();
+        return new Response(updated +
+                " grade updated for student with id " + id, locationData);
 
 
+    }
+
+    /*public class RegistrationLocationView1 {
+        private float location; private int regId;
+        private int getRegId() {return regId;}
+        public float getUsers_locationlat() {return location;}
+        public RegistrationLocationView1() {}
+    }
+    @PutMapping(path = "/{id}/regilocationlat/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response updateLocation1(@PathVariable int id,
+                                   @RequestBody RegistrationLocationView1 locationData) {
+        logger.info("Updating Location with " + id +
+                " with grade " + locationData.getUsers_locationlat());
+        // Not verifying if it exists (error if does not exist)
+        Integer updated = usRepository.updateLocation1(
+                locationData.getRegId(), locationData.getUsers_locationlat());
+        LocalDate.now();
+        return new Response(updated +
+                " grade updated for student with id " + id, locationData);
+
+
+    }*/
 }
+

@@ -61,9 +61,7 @@ public class Users {
         return users_password;
     }
 
-    public float getUsers_locationlong() {
-        return users_locationlong;
-    }
+    public float getUsers_locationlong() {return users_locationlong;}
 
     public float getUsers_locationlat() {
         return users_locationlat;
