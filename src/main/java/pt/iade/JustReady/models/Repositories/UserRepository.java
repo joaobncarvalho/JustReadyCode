@@ -47,15 +47,7 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
     @Query(value = QueryLocation, nativeQuery = true )
     Iterable<Users> viewLocation();
 
-    /*@Modifying @Transactional
-    @Query(value="'Update users set '"+
-            "'users_locationlong = :long,'" +
-            "'users_locationlat = :lat,'"+
-            "'where users_id = :id'", nativeQuery=true)
-    Integer locationData(@Param("id") int regId,
-                         @Param("location") double location);
 
-    Integer updateLocation(int regId, float users_locationlong, float users_locationlat);*/
 
 
 

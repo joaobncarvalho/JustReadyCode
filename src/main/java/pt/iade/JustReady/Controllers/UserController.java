@@ -77,56 +77,5 @@ public class UserController {
         return usRepository.viewLocation();
     }
 
-    /*public class RegistrationLocationView {
-        private float location;
-        private int regId;
-
-        private int getRegId() {
-            return regId;
-        }
-        public  float getUsers_locationlat(){ return location;}
-        public float getUsers_locationlong() {
-            return location;
-        }
-
-        public RegistrationLocationView() {
-        }
-    }
-
-    @PutMapping(path = "/{id:[0-9]+}/regilocation/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response updateLocation(@PathVariable int id,
-                                   @RequestBody RegistrationLocationView locationData) {
-        logger.info("Updating Location with " + id +
-                " with long " + locationData.getUsers_locationlong() + " with lat " + locationData.getUsers_locationlat());
-        // Not verifying if it exists (error if does not exist)
-        Integer updated = usRepository.updateLocation(
-                locationData.getRegId(), locationData.getUsers_locationlong(), locationData.getUsers_locationlat());
-        LocalDate.now();
-        return new Response(updated +
-                " grade updated for student with id " + id, locationData);
-
-
-    }*/
-
-    /*public class RegistrationLocationView1 {
-        private float location; private int regId;
-        private int getRegId() {return regId;}
-        public float getUsers_locationlat() {return location;}
-        public RegistrationLocationView1() {}
-    }
-    @PutMapping(path = "/{id}/regilocationlat/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response updateLocation1(@PathVariable int id,
-                                   @RequestBody RegistrationLocationView1 locationData) {
-        logger.info("Updating Location with " + id +
-                " with grade " + locationData.getUsers_locationlat());
-        // Not verifying if it exists (error if does not exist)
-        Integer updated = usRepository.updateLocation1(
-                locationData.getRegId(), locationData.getUsers_locationlat());
-        LocalDate.now();
-        return new Response(updated +
-                " grade updated for student with id " + id, locationData);
-
-
-    }*/
 }
 
