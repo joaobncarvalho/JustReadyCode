@@ -80,8 +80,8 @@ public class UserController {
         return usRepository.viewLocation();
     }
     @PutMapping(value = "/{id:[0-9]+}")
-    public User updateUser(@PathVariable("usersId")int userId, @RequestBody User user ){
-        return updateUser(userId,user);
+    public User updateUser(@PathVariable("usersid")int userid, @RequestBody User user ){
+        return updateUser(userid,user);
     }
 }
 
