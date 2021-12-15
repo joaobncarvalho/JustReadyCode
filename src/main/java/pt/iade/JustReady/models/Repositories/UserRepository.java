@@ -38,5 +38,13 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
 
     @Query(value = "select users_verification(:ticket,:pass)", nativeQuery = true)
     Iterable<String> Users_verification(int ticket, String pass);
+
+    String QueryLocation = "\n" +
+            "select *\n" +
+            "from users\n" +
+            "where users_id=2;";
+
+    @Query(value = QueryLocation, nativeQuery = true )
+    Iterable<Users> viewLocation();
 }
 

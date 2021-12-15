@@ -75,5 +75,12 @@ public class UserController {
         return usRepository.Users_verification(ticket,pass);
     }
 
-    
+    @GetMapping(path = "/location", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Users> getUsers_location() {
+        logger.info("Sending all user location");
+        return usRepository.viewLocation();
+    }
+
+
+
 }

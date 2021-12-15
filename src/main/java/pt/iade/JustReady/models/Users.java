@@ -28,6 +28,8 @@ public class Users {
     private int users_ticket;
     @Column(name="users_password")
     private String users_password;
+    @Column(name="users_location")
+    private float users_location;
 
 
     public int getUsers_id() {
@@ -54,6 +56,10 @@ public class Users {
 
     public String getUsers_password() {
         return users_password;
+    }
+
+    public float getUsers_location() {
+        return users_location;
     }
 
 
