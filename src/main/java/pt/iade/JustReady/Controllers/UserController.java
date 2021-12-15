@@ -80,7 +80,7 @@ public class UserController {
         return usRepository.viewLocation();
     }
 
-    @PutMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Users updateUsers(@RequestBody Users users) {
         Users updateUsers = usRepository.save(users);
         logger.info("Saving users with id " + updateUsers.getUsers_id());
