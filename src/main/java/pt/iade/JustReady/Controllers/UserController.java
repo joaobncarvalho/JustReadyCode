@@ -93,7 +93,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(path = "/{id}/regilocationlong/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}/regilocation/", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response updateLocation(@PathVariable int id,
                                    @RequestBody RegistrationLocationView locationData) {
         logger.info("Updating Location with " + id +
