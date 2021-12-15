@@ -3,6 +3,7 @@ package pt.iade.JustReady.Controllers;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import pt.iade.JustReady.models.Users;
 import pt.iade.JustReady.models.Exceptions.NotFoundException;
 import pt.iade.JustReady.models.Exceptions.Response;
 import pt.iade.JustReady.models.Repositories.UserRepository;
+
+import javax.xml.stream.Location;
 
 @RestController
 @RequestMapping(path = "/api/users")
@@ -76,6 +79,9 @@ public class UserController {
         logger.info("Sending all user location");
         return usRepository.viewLocation();
     }
-
+    @PutMapping(value = "/{id:[0-9]+}")
+    public User updateUser(@PathVariable("usersId")int userId, @RequestBody User user ){
+        return updateUser(userId,user);
+    }
 }
 
