@@ -38,9 +38,9 @@ public class UserController {
     }
 
     @GetMapping(path = "/friends1", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Users> getFriends1() {
-        logger.info("Sending all friends1");
-        return usRepository.viewFriendsusers1();
+    public Iterable<Users> getFriends1(@PathVariable int id) {
+        logger.info("Sending all friends1"+id);
+        return usRepository.viewFriendsusers1(id);
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
