@@ -19,7 +19,7 @@ public class Users {
     @Column(name="users_name") 
     private String users_name;
     @Column(name="users_bdate") 
-    private LocalDate users_bdate;
+    private String users_bdate;
     @Column(name="users_gender") 
     private char users_gender;
     @Column(name="users_email") 
@@ -43,7 +43,7 @@ public class Users {
         return users_name;
     }
     
-    public LocalDate getUsers_bdate() {return users_bdate;}
+    public String getUsers_bdate() {return users_bdate;}
     
     public char getUsers_gender() {
         return users_gender;
