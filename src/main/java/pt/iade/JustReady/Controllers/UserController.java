@@ -31,10 +31,10 @@ public class UserController {
         return usRepository.findAll();
     }
 
-    @GetMapping(path = "/friends", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Users> getFriends() {
-        logger.info("Sending all friends");
-        return usRepository.viewFriendsusers();
+    @GetMapping(path = "/friendadd/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Users> getFriends(@PathVariable int id) {
+        logger.info("Sending all friends"+id);
+        return usRepository.viewFriendsusers(id);
     }
 
     @GetMapping(path = "/friends1/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)

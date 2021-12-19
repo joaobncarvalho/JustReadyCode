@@ -12,13 +12,15 @@ import pt.iade.JustReady.models.Users;
 import javax.transaction.Transactional;
 
 public interface UserRepository extends CrudRepository<Users, Integer> {
+
     String QueryFriends = "\n" +
             "select *\n" +
             "from users\n" +
-            "where users_id=2;";
+            "where users_ticket = :id \n";
+
 
     @Query(value = QueryFriends, nativeQuery = true )
-    Iterable<Users> viewFriendsusers();
+    Iterable<Users> viewFriendsusers(int id);
 
     String QueryFriends1 = "\n" +
             "select Distinct *\n" +
