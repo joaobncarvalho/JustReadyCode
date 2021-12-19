@@ -50,7 +50,7 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
     String QueryLocation = "\n" +
             "select *\n" +
             "from users\n" +
-            "where users_id=2;";
+            "where users_Id=2;";
 
     @Query(value = QueryLocation, nativeQuery = true )
     Iterable<Users> viewLocation();
