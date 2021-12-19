@@ -21,7 +21,7 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
     Iterable<Users> viewFriendsusers();
 
     String QueryFriends1 = "\n" +
-            "select *\n" +
+            "select Distinct *\n" +
             "\n" +
             "from relationshiplist\n" +
             "         inner join users u1 on rl_users_idmain=u1.users_id\n" +

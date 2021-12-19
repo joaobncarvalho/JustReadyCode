@@ -37,7 +37,7 @@ public class UserController {
         return usRepository.viewFriendsusers();
     }
 
-    @GetMapping(path = "/friends1", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/friends1/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Users> getFriends1(@PathVariable int id) {
         logger.info("Sending all friends1"+id);
         return usRepository.viewFriendsusers1(id);
