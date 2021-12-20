@@ -26,7 +26,7 @@ public class UserController {
     private UserRepository usRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Users> getUser() {
+    public Iterable<Users> getUser()  {
         logger.info("Sending all user");
         return usRepository.findAll();
     }
