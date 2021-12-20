@@ -37,6 +37,12 @@ public class UserController {
         return usRepository.viewFriendsusers(id);
     }
 
+    @PostMapping(path = "/friendadd/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Users> getAddFriends(@PathVariable int id) {
+        logger.info("Sending all friends"+id);
+        return usRepository.viewFriendsusers(id);
+    }
+
     @GetMapping(path = "/friends1/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Users> getFriends1(@PathVariable int id) {
         logger.info("Sending all friends1"+id);
@@ -68,11 +74,6 @@ public class UserController {
         return new Response("Deleted users with id " + id, null);
     }
 
-    @GetMapping(path = "/exite/{ticket}/{pass}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getexit_userBypass_nome(@PathVariable("ticket") int ticket, @PathVariable("pass") String pass) {
-        logger.info("Sending bio from route ticket: ,pass:" + ticket + pass);
-        return usRepository.Users_verification(ticket, pass);
-    }
 
     @GetMapping(path = "/location", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Users> getUsers_location() {
