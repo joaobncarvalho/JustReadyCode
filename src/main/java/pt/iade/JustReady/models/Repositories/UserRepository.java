@@ -24,12 +24,10 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
 
     String QueryFriends1 = "\n" +
             "select Distinct *\n" +
-            "\n" +
-            "from relationshiplist\n" +
-            "         inner join users u1 on rl_users_idmain=u1.users_id\n" +
-            "         inner join users u2 on rl_users_idfriend=u2.users_id\n" +
-            "         inner join relationship_type on rl_rel_nameid=rel_id\n" +
-            "         where rl_users_ticket = :id \n";
+            "            from relationshiplist\n" +
+            "                    inner join users u2 on rl_users_idfriend=u2.users_id\n" +
+            "                    where rl_users_ticket = :id ;\n";
+
 
 
 
