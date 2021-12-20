@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 public interface UserRepository extends CrudRepository<Users, Integer> {
 
     String QueryFriends = "\n" +
-            "select users_id\n" +
+            "select *\n" +
             "from users\n" +
             "where users_ticket = :id \n";
 
